@@ -29,6 +29,10 @@ combined_data = discourse_data + [
     for item in course_data if "body" in item
 ]
 
+if not combined_data:
+    print("⚠️ Warning: Combined dataset is empty. Please check your data files.")
+    combined_data = [{"source": "none", "title": "Empty", "body": "No data available", "url": ""}]
+
 
 # Load sentence embedding model
 model = SentenceTransformer("all-MiniLM-L6-v2")
